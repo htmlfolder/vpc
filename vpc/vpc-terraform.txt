@@ -1,14 +1,12 @@
-
-
-vi provider
+vi provider.tf
 
 provider "aws" {
   region     = "ap-south-1"
   access_key = "access-key"
   secret_key = "sec-key"
 }
-
-vi data.sh
+----------------------------------------------
+vi sample.sh
 
 #!/bin/bash
 
@@ -17,8 +15,8 @@ yum install httpd -y
 systemctl start httpd
 systemctl enable httpd
 
-
-vi sg
+----------------------------------------------
+vi sg.tf
 
 resource "aws_security_group" "example_sg" {
 
@@ -41,8 +39,9 @@ resource "aws_security_group" "example_sg" {
     Name = "task"
   }
 }
+------------------------------------------------
+vi server.tf
 
-vi server
 resource "aws_instance" "example-1" {
   ami           = "ami-08ee1453725d19cdb"
   instance_type = "t2.micro"
@@ -126,22 +125,4 @@ resource "aws_route_table_association" "my_route_table_association" {
   subnet_id      = aws_subnet.my_subnet.id
   route_table_id = aws_route_table.my_route_table.id
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
